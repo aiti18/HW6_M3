@@ -42,12 +42,16 @@ class CitiesFragment : Fragment() {
                 Item("Нур-Султан", R.drawable.nur_sultan),
                 Item("Шымкент", R.drawable.shymkent)
             )
+
             "Россия" -> listOf(
                 Item("Москва", R.drawable.moscow),
                 Item("Санкт-Петербург", R.drawable.spb),
                 Item("Казань", R.drawable.kazan)
             )
-            else -> emptyList()
+
+            else -> {
+                return listOf()
+            }
         }
     }
 }
