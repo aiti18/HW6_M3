@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw6_m3.databinding.FragmentContinentBinding
+import java.util.ArrayList
 
 class ContinentFragment : Fragment() {
 
@@ -29,16 +33,8 @@ class ContinentFragment : Fragment() {
         )
 
         val adapter = ItemAdapter(requireContext(), continents) { item ->
-            val countriesFragment = CountriesFragment().apply {
-                arguments = Bundle().apply {
-                    putString("continent", item.text)
-                }
-            }
-
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, countriesFragment)
-                .addToBackStack(null)
-                .commit()
+            val action = ContinentFragmentDirections.actionContinentFragmentToCountriesFragment(item.text)
+            findNavController().navigate(action)
         }
 
         recyclerView.layoutManager = LinearLayoutManager(context)

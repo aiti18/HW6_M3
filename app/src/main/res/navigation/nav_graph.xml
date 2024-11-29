@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/continentFragment">
+
+    <fragment
+        android:id="@+id/continentFragment"
+        android:name="com.example.hw6_m3.ContinentFragment"
+        android:label="fragment_continent"
+        tools:layout="@layout/fragment_continent" >
+        <action
+            android:id="@+id/action_continentFragment_to_countriesFragment"
+            app:destination="@id/countriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.example.hw6_m3.CountriesFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_countries" >
+        <action
+            android:id="@+id/action_countriesFragment_to_citiesFragment"
+            app:destination="@id/citiesFragment" />
+        <argument
+            android:name="continent"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="com.example.hw6_m3.CitiesFragment"
+        android:label="fragment_sities"
+        tools:layout="@layout/fragment_sities" >
+        <argument
+            android:name="country"
+            app:argType="string" />
+    </fragment>
+</navigation>
